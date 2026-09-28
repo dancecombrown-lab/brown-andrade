@@ -420,12 +420,12 @@ a[data-todo], a[data-social] { text-decoration: none; }
 /* ---------- Grid de cursos, lado a lado ---------- */
 .course-grid { margin-top: 28px; }
 .course-grid__in { display: grid; gap: 14px; }
-.course-grid__item { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); transition: transform .25s ease; }
+.course-grid__item { display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: var(--graphite); transition: transform .25s ease; }
 .course-grid__item:hover { transform: translateY(-3px); }
+.course-grid__media-wrap { aspect-ratio: 16 / 9; overflow: hidden; }
 .course-grid__media { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
 .course-grid__item:hover .course-grid__media { transform: scale(1.04); }
-.course-grid__item::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .28) 42%, rgba(0, 0, 0, 0) 68%); }
-.selector__copy { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 20px 22px; z-index: 1; color: var(--white); }
+.selector__copy { padding: 18px 20px 22px; color: var(--white); }
 .selector__eyebrow { font-family: var(--font-body); text-transform: uppercase; letter-spacing: .18em; font-size: .7rem; font-weight: 700; color: var(--yellow); margin-bottom: 6px; }
 .selector__copy h3 { font-family: var(--font-display); font-weight: 900; font-style: italic; text-transform: uppercase; font-size: clamp(1.5rem, 4.5vw, 2rem); line-height: 1; margin-bottom: 14px; }
 .selector__cta { pointer-events: none; }
