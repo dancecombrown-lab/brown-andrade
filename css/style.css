@@ -270,6 +270,7 @@ h3 { font-weight: 800; }
 .compare__scroll { overflow-x: auto; border: 1px solid rgba(0, 0, 0, .14); border-radius: 10px; background: var(--white); }
 .compare table { width: 100%; border-collapse: collapse; min-width: 340px; }
 .compare th, .compare td { padding: 13px 8px; text-align: center; border-bottom: 1px solid rgba(0, 0, 0, .09); font-size: .98rem; }
+.compare tbody th, .compare tbody td { color: var(--ink); }
 .compare tbody th { text-align: left; font-weight: 600; padding-left: 14px; }
 .compare thead th { background: var(--black); color: var(--white); font-family: var(--font-display); font-style: italic; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; font-size: 1.05rem; }
 .compare tbody tr:last-child > * { border-bottom: 0; }
