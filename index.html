@@ -113,13 +113,70 @@
       </div>
     </section>
 
-    <!-- 03 CURSOS: um seletor, duas jornadas -->
+    <!-- 03 CURSOS: seletor em carrossel, duas jornadas -->
     <section class="sec sec--cursos-head" id="cursos">
       <div class="wrap">
         <div class="sec__head reveal">
-          <p class="eyebrow">Conheça as comunidades e o curso</p>
-          <h2>Duas comunidades.<br><span class="hl">Um curso novo.</span></h2>
-          <p class="lead">Escolha seu caminho e veja o que você recebe em cada um.</p>
+          <h2>Conheça <span class="hl">nossa comunidade.</span></h2>
+        </div>
+      </div>
+
+      <div class="selector reveal" data-selector aria-roledescription="carrossel" aria-label="Conheça nossa comunidade">
+        <div class="wrap">
+          <div class="selector__stage">
+            <div class="selector__viewport" data-selector-viewport>
+              <ul class="selector__track" data-selector-track>
+                <li class="selector__slide selector__slide--institucional" role="group" aria-roledescription="slide" aria-label="1 de 4, Institucional">
+                  <a href="#escola">
+                    <img class="selector__media" src="img/brown-hero.webp" alt="" loading="lazy" draggable="false">
+                    <div class="selector__copy">
+                      <p class="selector__eyebrow">Institucional</p>
+                      <h3>Escola Brown Andrade</h3>
+                      <span class="btn btn--sm selector__cta">Conhecer a escola</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="selector__slide" role="group" aria-roledescription="slide" aria-label="2 de 4, Comunidade Passinhos Charme">
+                  <a href="#planos-charme" data-goto="planos" data-course="charme">
+                    <img class="selector__media" src="img/sel-charme.webp" alt="" loading="lazy" draggable="false">
+                    <div class="selector__copy">
+                      <p class="selector__eyebrow">Comunidade</p>
+                      <h3>Passinhos Charme</h3>
+                      <span class="btn btn--sm selector__cta">Ver planos</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="selector__slide" role="group" aria-roledescription="slide" aria-label="3 de 4, Comunidade Ritmos">
+                  <a href="#planos-ritmos" data-goto="planos" data-course="ritmos">
+                    <img class="selector__media" src="img/sel-ritmos.webp" alt="" loading="lazy" draggable="false">
+                    <div class="selector__copy">
+                      <p class="selector__eyebrow">Comunidade</p>
+                      <h3>Ritmos</h3>
+                      <span class="btn btn--sm selector__cta">Ver planos</span>
+                    </div>
+                  </a>
+                </li>
+                <li class="selector__slide" role="group" aria-roledescription="slide" aria-label="4 de 4, Curso Do Zero ao Ritmo">
+                  <a href="#planos-zeroaoritmo" data-goto="planos" data-course="zeroaoritmo">
+                    <img class="selector__media" src="img/sel-zeroaoritmo.webp" alt="" loading="lazy" draggable="false">
+                    <div class="selector__copy">
+                      <p class="selector__eyebrow">Curso</p>
+                      <h3>Do Zero ao Ritmo</h3>
+                      <span class="btn btn--sm selector__cta">Ver curso</span>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <button class="selector__arrow selector__arrow--prev" type="button" aria-label="Slide anterior" data-selector-prev><svg class="ico"><use href="#i-arrow"/></svg></button>
+            <button class="selector__arrow selector__arrow--next" type="button" aria-label="Próximo slide" data-selector-next><svg class="ico"><use href="#i-arrow"/></svg></button>
+          </div>
+          <div class="selector__dots" data-selector-dots>
+            <button class="selector__dot" type="button" data-slide-to="0" aria-label="Ir para Institucional" aria-selected="true"></button>
+            <button class="selector__dot" type="button" data-slide-to="1" aria-label="Ir para Passinhos Charme" aria-selected="false"></button>
+            <button class="selector__dot" type="button" data-slide-to="2" aria-label="Ir para Ritmos" aria-selected="false"></button>
+            <button class="selector__dot" type="button" data-slide-to="3" aria-label="Ir para Do Zero ao Ritmo" aria-selected="false"></button>
+          </div>
         </div>
       </div>
     </section>

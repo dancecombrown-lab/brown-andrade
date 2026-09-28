@@ -142,6 +142,78 @@
     el.addEventListener("click", function (e) { e.preventDefault(); notify("Pendente: " + el.getAttribute("data-todo") + "."); });
   });
 
+  // ---- Carrossel "Conheça nossa comunidade" ----
+  (function () {
+    var root = document.querySelector("[data-selector]");
+    if (!root) return;
+    var viewport = root.querySelector("[data-selector-viewport]");
+    var track = root.querySelector("[data-selector-track]");
+    var slides = Array.prototype.slice.call(track.children);
+    var dots = Array.prototype.slice.call(root.querySelectorAll("[data-slide-to]"));
+    var prevBtn = root.querySelector("[data-selector-prev]");
+    var nextBtn = root.querySelector("[data-selector-next]");
+    var count = slides.length;
+    var index = 0;
+    var startX = 0, currentX = 0, dragging = false, moved = false;
+
+    function go(i) {
+      index = (i + count) % count;
+      track.style.transform = "translateX(" + (-index * (100 / count)) + "%)";
+      dots.forEach(function (d, di) { d.setAttribute("aria-selected", di === index ? "true" : "false"); });
+    }
+
+    prevBtn.addEventListener("click", function () { go(index - 1); });
+    nextBtn.addEventListener("click", function () { go(index + 1); });
+    dots.forEach(function (d) {
+      d.addEventListener("click", function () { go(parseInt(d.getAttribute("data-slide-to"), 10)); });
+    });
+
+    function onDown(e) {
+      dragging = true; moved = false;
+      startX = e.clientX;
+      track.classList.add("is-dragging");
+    }
+    function onMove(e) {
+      if (!dragging) return;
+      currentX = e.clientX;
+      var delta = currentX - startX;
+      if (Math.abs(delta) > 6) moved = true;
+      var percent = (delta / viewport.offsetWidth) * (100 / count);
+      track.style.transform = "translateX(" + (-index * (100 / count) + percent) + "%)";
+    }
+    function onUp() {
+      if (!dragging) return;
+      dragging = false;
+      track.classList.remove("is-dragging");
+      var delta = currentX - startX;
+      if (Math.abs(delta) > viewport.offsetWidth * 0.15) {
+        go(index + (delta < 0 ? 1 : -1));
+      } else {
+        go(index);
+      }
+    }
+    track.addEventListener("pointerdown", function (e) {
+      if (e.button !== undefined && e.button !== 0) return;
+      onDown(e);
+      track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener("pointermove", onMove);
+    track.addEventListener("pointerup", onUp);
+    track.addEventListener("pointercancel", onUp);
+
+    // Suprime o clique no link quando o gesto foi um arraste
+    track.addEventListener("click", function (e) {
+      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
+    }, true);
+
+    root.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight") { go(index + 1); e.preventDefault(); }
+      if (e.key === "ArrowLeft") { go(index - 1); e.preventDefault(); }
+    });
+
+    go(0);
+  })();
+
   // ---- Header: borda ao rolar ----
   function onScroll() { header.classList.toggle("is-scrolled", window.scrollY > 8); }
   onScroll();
