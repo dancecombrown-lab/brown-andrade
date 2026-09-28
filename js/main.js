@@ -154,12 +154,24 @@
     var nextBtn = root.querySelector("[data-selector-next]");
     var count = slides.length;
     var index = 0;
-    var startX = 0, currentX = 0, dragging = false, moved = false;
+    var startX = 0, currentX = 0, dragging = false, moved = false, downLink = null;
 
     function go(i) {
       index = (i + count) % count;
       track.style.transform = "translateX(" + (-index * (100 / count)) + "%)";
       dots.forEach(function (d, di) { d.setAttribute("aria-selected", di === index ? "true" : "false"); });
+    }
+
+    // Navegação disparada diretamente pelo JS (não depende do clique nativo do link)
+    function activate(link) {
+      if (!link) return;
+      if (link.getAttribute("data-goto") === "planos") {
+        var course = link.getAttribute("data-course");
+        setCourse(course);
+        scrollToEl(document.getElementById("planos-" + course));
+      } else {
+        scrollToEl(document.querySelector(link.getAttribute("href")));
+      }
     }
 
     prevBtn.addEventListener("click", function () { go(index - 1); });
@@ -170,7 +182,8 @@
 
     function onDown(e) {
       dragging = true; moved = false;
-      startX = e.clientX;
+      startX = currentX = e.clientX;
+      downLink = e.target.closest("a");
       track.classList.add("is-dragging");
     }
     function onMove(e) {
@@ -190,7 +203,9 @@
         go(index + (delta < 0 ? 1 : -1));
       } else {
         go(index);
+        if (!moved) activate(downLink);
       }
+      downLink = null;
     }
     track.addEventListener("pointerdown", function (e) {
       if (e.button !== undefined && e.button !== 0) return;
@@ -199,16 +214,20 @@
     });
     track.addEventListener("pointermove", onMove);
     track.addEventListener("pointerup", onUp);
-    track.addEventListener("pointercancel", onUp);
+    track.addEventListener("pointercancel", function () {
+      dragging = false; track.classList.remove("is-dragging"); downLink = null;
+    });
 
-    // Suprime o clique no link quando o gesto foi um arraste
-    track.addEventListener("click", function (e) {
-      if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
-    }, true);
+    // A navegação já é disparada em onUp(); o clique nativo do link é sempre suprimido aqui
+    track.addEventListener("click", function (e) { e.preventDefault(); }, true);
 
     root.addEventListener("keydown", function (e) {
       if (e.key === "ArrowRight") { go(index + 1); e.preventDefault(); }
       if (e.key === "ArrowLeft") { go(index - 1); e.preventDefault(); }
+      if (e.key === "Enter" && e.target.tagName === "A") {
+        e.preventDefault();
+        activate(e.target.closest("a"));
+      }
     });
 
     go(0);
