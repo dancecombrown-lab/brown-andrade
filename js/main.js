@@ -30,20 +30,14 @@
 
   var header = document.querySelector(".header");
 
-  // ---- Seletor de cursos (abas) ----
+  // ---- Seletor de cursos ----
   var journey = document.querySelector(".journey");
-  var tabs = Array.prototype.slice.call(document.querySelectorAll("[data-tab]"));
   var active = "charme";
 
   function setCourse(course) {
     if (COURSES.indexOf(course) < 0) return;
     active = course;
     if (journey) journey.setAttribute("data-course", course);
-    tabs.forEach(function (tab) {
-      var on = tab.getAttribute("data-tab") === course;
-      tab.setAttribute("aria-selected", on ? "true" : "false");
-      tab.tabIndex = on ? 0 : -1;
-    });
     COURSES.forEach(function (c) {
       var panel = document.getElementById("curso-" + c);
       if (panel) panel.hidden = c !== course;
@@ -57,25 +51,6 @@
   function scrollToTabs() {
     scrollToEl(document.getElementById("cursos"));
   }
-
-  tabs.forEach(function (tab, i) {
-    tab.addEventListener("click", function () {
-      setCourse(tab.getAttribute("data-tab"));
-      history.replaceState(null, "", "#curso-" + active);
-      // Se o visitante estava no meio do curso anterior, volta ao início do novo
-      var headerH = header ? header.offsetHeight : 0;
-      var top = journey.getBoundingClientRect().top + window.scrollY - headerH;
-      if (window.scrollY > top) window.scrollTo({ top: top, behavior: "instant" });
-    });
-    tab.addEventListener("keydown", function (e) {
-      var dir = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
-      if (!dir) return;
-      var next = tabs[(i + dir + tabs.length) % tabs.length];
-      next.focus();
-      next.click();
-      e.preventDefault();
-    });
-  });
 
   // Curso inicial: ?curso=ritmos ou #ritmos / #curso-ritmos / #planos-ritmos
   function courseFromUrl() {
@@ -94,13 +69,14 @@
     }
   }
 
-  // Links "ver planos": levam aos planos do curso escolhido
-  document.querySelectorAll("[data-goto='planos']").forEach(function (el) {
+  // Links "conhecer o curso" / "ver planos": levam à descrição ou aos planos do curso escolhido
+  document.querySelectorAll("[data-goto]").forEach(function (el) {
     el.addEventListener("click", function (e) {
       var course = el.getAttribute("data-course") || active;
+      var target = el.getAttribute("data-goto"); // "curso" ou "planos"
       e.preventDefault();
       setCourse(course);
-      scrollToEl(document.getElementById("planos-" + course));
+      scrollToEl(document.getElementById(target + "-" + course));
     });
   });
 
