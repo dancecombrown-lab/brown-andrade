@@ -419,7 +419,7 @@ a[data-todo], a[data-social] { text-decoration: none; }
 /* ---------- Grid de cursos, lado a lado ---------- */
 .course-grid { margin-top: 28px; }
 .course-grid__in { display: grid; gap: 14px; }
-.course-grid__item { display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: var(--graphite); transition: transform .25s ease; }
+.course-grid__item { display: flex; flex-direction: column; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); background: var(--graphite); text-decoration: none; transition: transform .25s ease; }
 .course-grid__item:hover { transform: translateY(-3px); }
 .course-grid__media-wrap { aspect-ratio: 16 / 9; overflow: hidden; }
 .course-grid__media { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
