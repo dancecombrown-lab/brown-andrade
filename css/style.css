@@ -417,40 +417,22 @@ a[data-todo], a[data-social] { text-decoration: none; }
 .sec--cursos-head .sec__head { margin-bottom: 0; }
 .sec--tex { isolation: isolate; }
 
-/* ---------- Seletor em carrossel (institucional + cursos) ---------- */
-.selector { margin-top: 28px; }
-.selector__stage { position: relative; }
-.selector__viewport { overflow: hidden; border-radius: var(--radius); }
-.selector__track { display: flex; width: 400%; margin: 0; padding: 0; list-style: none; transition: transform .5s cubic-bezier(.65, 0, .35, 1); touch-action: pan-y; cursor: grab; }
-.selector__track.is-dragging { transition: none; cursor: grabbing; }
-.selector__slide { flex: 0 0 25%; width: 25%; padding-inline: 6px; box-sizing: border-box; }
-.selector__slide > a { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); }
-.selector__slide--institucional > a { background: var(--graphite); }
-.selector__media { width: 100%; height: 100%; object-fit: cover; display: block; -webkit-user-drag: none; user-select: none; pointer-events: none; }
-.selector__slide--institucional .selector__media { opacity: .5; object-position: 75% 12%; }
-.selector__slide > a::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .28) 42%, rgba(0, 0, 0, 0) 68%); }
+/* ---------- Grid de cursos, lado a lado ---------- */
+.course-grid { margin-top: 28px; }
+.course-grid__in { display: grid; gap: 14px; }
+.course-grid__item { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); transition: transform .25s ease; }
+.course-grid__item:hover { transform: translateY(-3px); }
+.course-grid__media { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.course-grid__item:hover .course-grid__media { transform: scale(1.04); }
+.course-grid__item::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0, 0, 0, .82) 0%, rgba(0, 0, 0, .28) 42%, rgba(0, 0, 0, 0) 68%); }
 .selector__copy { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 20px 22px; z-index: 1; color: var(--white); }
 .selector__eyebrow { font-family: var(--font-body); text-transform: uppercase; letter-spacing: .18em; font-size: .7rem; font-weight: 700; color: var(--yellow); margin-bottom: 6px; }
-.selector__copy h3 { font-family: var(--font-display); font-weight: 900; font-style: italic; text-transform: uppercase; font-size: clamp(1.7rem, 6vw, 2.6rem); line-height: 1; margin-bottom: 14px; }
+.selector__copy h3 { font-family: var(--font-display); font-weight: 900; font-style: italic; text-transform: uppercase; font-size: clamp(1.5rem, 4.5vw, 2rem); line-height: 1; margin-bottom: 14px; }
 .selector__cta { pointer-events: none; }
 
-.selector__arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 42px; height: 42px; border-radius: 50%; background: var(--white); color: var(--black); display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; box-shadow: 0 4px 14px rgba(0, 0, 0, .35); }
-.selector__arrow .ico { width: 20px; height: 20px; }
-.selector__arrow--prev { left: 8px; }
-.selector__arrow--prev .ico { transform: rotate(180deg); }
-.selector__arrow--next { right: 8px; }
-.selector__arrow:hover { background: var(--yellow); }
-
-.selector__dots { display: flex; justify-content: center; gap: 10px; margin-top: 18px; }
-.selector__dot { width: 9px; height: 9px; border-radius: 50%; background: var(--line); border: none; padding: 0; cursor: pointer; }
-.selector__dot[aria-selected="true"] { background: var(--yellow); }
-
-@media (min-width: 640px) {
-  .selector__slide { padding-inline: 10px; }
-  .selector__copy { padding: 26px 32px 32px; }
-  .selector__arrow { width: 52px; height: 52px; }
-  .selector__arrow--prev { left: 18px; }
-  .selector__arrow--next { right: 18px; }
+@media (min-width: 780px) {
+  .course-grid__in { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .selector__copy { padding: 22px 26px 28px; }
 }
 
 .journey [id] { scroll-margin-top: calc(var(--header-h) + var(--tabs-h)); }

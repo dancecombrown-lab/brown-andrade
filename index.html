@@ -31,7 +31,7 @@
   <!-- Pixel / Analytics: inserir aqui quando definido na estratégia de mídia -->
 </head>
 <body>
-  <a class="skip" href="#escola">Ir para o conteúdo</a>
+  <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 
   <!-- Ícones (sprite) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -66,7 +66,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="conteudo">
     <!-- 01 HERO -->
     <section class="hero" id="inicio">
       <div class="wrap hero__in">
@@ -81,7 +81,7 @@
           <p class="hero__sub">Participe das comunidades <strong>Passinhos Charme</strong> e <strong>Ritmos</strong>, ou comece com o curso <strong>Do Zero ao Ritmo</strong>, com Brown Andrade, no seu tempo.</p>
           <div class="hero__cta">
             <a class="btn btn--lg" href="#cursos">Quero começar agora <svg class="ico"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn--lg btn--ghost" href="#escola">Conheça a Escola</a>
+            <a class="btn btn--lg btn--ghost" href="#cursos">Conheça os cursos</a>
           </div>
           <ul class="chips" aria-label="Destaques">
             <li>Acesso imediato</li>
@@ -95,25 +95,7 @@
       </div>
     </section>
 
-    <!-- 02 A ESCOLA -->
-    <section class="sec sec--graphite" id="escola">
-      <div class="wrap">
-        <div class="sec__head reveal">
-          <p class="eyebrow">A Escola Brown Andrade</p>
-          <h2>Mais que aulas.<br><span class="hl">Um movimento.</span></h2>
-          <p class="lead">Uma escola de dança online com as comunidades Passinhos Charme e Ritmos, e o curso Do Zero ao Ritmo, com método, evolução por níveis e a energia do Brown.</p>
-        </div>
-        <ul class="feats feats--3">
-          <li class="reveal"><svg class="ico"><use href="#i-play"/></svg><h3>Aulas em vídeo</h3><p>Assista quando e quantas vezes quiser.</p></li>
-          <li class="reveal"><svg class="ico"><use href="#i-live"/></svg><h3>Aula ao vivo</h3><p>Toda quarta-feira, na comunidade Passinhos Charme.</p></li>
-          <li class="reveal"><svg class="ico"><use href="#i-bars"/></svg><h3>Evolução por níveis</h3><p>Do básico ao avançado, passo a passo.</p></li>
-          <li class="reveal"><svg class="ico"><use href="#i-music"/></svg><h3>Diferentes estilos</h3><p>Charme, axé, sertanejo, funk, hip hop e mais.</p></li>
-          <li class="reveal"><svg class="ico"><use href="#i-screen"/></svg><h3>Acesso online</h3><p>Aprenda de onde estiver.</p></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 03 CURSOS: seletor em carrossel, duas jornadas -->
+    <!-- 02 CURSOS: cards lado a lado, duas jornadas -->
     <section class="sec sec--cursos-head" id="cursos">
       <div class="wrap">
         <div class="sec__head reveal">
@@ -121,62 +103,32 @@
         </div>
       </div>
 
-      <div class="selector reveal" data-selector aria-roledescription="carrossel" aria-label="Conheça nossa comunidade">
-        <div class="wrap">
-          <div class="selector__stage">
-            <div class="selector__viewport" data-selector-viewport>
-              <ul class="selector__track" data-selector-track>
-                <li class="selector__slide selector__slide--institucional" role="group" aria-roledescription="slide" aria-label="1 de 4, Institucional">
-                  <a href="#escola">
-                    <img class="selector__media" src="img/brown-hero.webp" alt="" loading="lazy" draggable="false">
-                    <div class="selector__copy">
-                      <p class="selector__eyebrow">Institucional</p>
-                      <h3>Escola Brown Andrade</h3>
-                      <span class="btn btn--sm selector__cta">Conhecer a escola</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="selector__slide" role="group" aria-roledescription="slide" aria-label="2 de 4, Comunidade Passinhos Charme">
-                  <a href="#planos-charme" data-goto="planos" data-course="charme">
-                    <img class="selector__media" src="img/sel-charme.webp" alt="" loading="lazy" draggable="false">
-                    <div class="selector__copy">
-                      <p class="selector__eyebrow">Comunidade</p>
-                      <h3>Passinhos Charme</h3>
-                      <span class="btn btn--sm selector__cta">Ver planos</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="selector__slide" role="group" aria-roledescription="slide" aria-label="3 de 4, Comunidade Ritmos">
-                  <a href="#planos-ritmos" data-goto="planos" data-course="ritmos">
-                    <img class="selector__media" src="img/sel-ritmos.webp" alt="" loading="lazy" draggable="false">
-                    <div class="selector__copy">
-                      <p class="selector__eyebrow">Comunidade</p>
-                      <h3>Ritmos</h3>
-                      <span class="btn btn--sm selector__cta">Ver planos</span>
-                    </div>
-                  </a>
-                </li>
-                <li class="selector__slide" role="group" aria-roledescription="slide" aria-label="4 de 4, Curso Do Zero ao Ritmo">
-                  <a href="#planos-zeroaoritmo" data-goto="planos" data-course="zeroaoritmo">
-                    <img class="selector__media" src="img/sel-zeroaoritmo.webp" alt="" loading="lazy" draggable="false">
-                    <div class="selector__copy">
-                      <p class="selector__eyebrow">Curso</p>
-                      <h3>Do Zero ao Ritmo</h3>
-                      <span class="btn btn--sm selector__cta">Ver curso</span>
-                    </div>
-                  </a>
-                </li>
-              </ul>
+      <div class="course-grid reveal">
+        <div class="wrap course-grid__in">
+          <a class="course-grid__item" href="#planos-charme" data-goto="planos" data-course="charme">
+            <img class="course-grid__media" src="img/sel-charme.webp" alt="" loading="lazy">
+            <div class="selector__copy">
+              <p class="selector__eyebrow">Comunidade</p>
+              <h3>Passinhos Charme</h3>
+              <span class="btn btn--sm selector__cta">Ver planos</span>
             </div>
-            <button class="selector__arrow selector__arrow--prev" type="button" aria-label="Slide anterior" data-selector-prev><svg class="ico"><use href="#i-arrow"/></svg></button>
-            <button class="selector__arrow selector__arrow--next" type="button" aria-label="Próximo slide" data-selector-next><svg class="ico"><use href="#i-arrow"/></svg></button>
-          </div>
-          <div class="selector__dots" data-selector-dots>
-            <button class="selector__dot" type="button" data-slide-to="0" aria-label="Ir para Institucional" aria-selected="true"></button>
-            <button class="selector__dot" type="button" data-slide-to="1" aria-label="Ir para Passinhos Charme" aria-selected="false"></button>
-            <button class="selector__dot" type="button" data-slide-to="2" aria-label="Ir para Ritmos" aria-selected="false"></button>
-            <button class="selector__dot" type="button" data-slide-to="3" aria-label="Ir para Do Zero ao Ritmo" aria-selected="false"></button>
-          </div>
+          </a>
+          <a class="course-grid__item" href="#planos-ritmos" data-goto="planos" data-course="ritmos">
+            <img class="course-grid__media" src="img/sel-ritmos.webp" alt="" loading="lazy">
+            <div class="selector__copy">
+              <p class="selector__eyebrow">Comunidade</p>
+              <h3>Ritmos</h3>
+              <span class="btn btn--sm selector__cta">Ver planos</span>
+            </div>
+          </a>
+          <a class="course-grid__item" href="#planos-zeroaoritmo" data-goto="planos" data-course="zeroaoritmo">
+            <img class="course-grid__media" src="img/sel-zeroaoritmo.webp" alt="" loading="lazy">
+            <div class="selector__copy">
+              <p class="selector__eyebrow">Curso</p>
+              <h3>Do Zero ao Ritmo</h3>
+              <span class="btn btn--sm selector__cta">Ver curso</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
