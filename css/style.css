@@ -397,6 +397,7 @@ a[data-todo], a[data-social] { text-decoration: none; }
 
   .two { grid-template-columns: 1fr 1fr; gap: 64px; }
   .plans { grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+  .plans--one { grid-template-columns: minmax(0, 420px); justify-content: center; }
   .plan--best { transform: translateY(-14px); padding-block: 34px 32px; }
   .plan__price strong { font-size: 6.4rem; }
 
@@ -417,15 +418,15 @@ a[data-todo], a[data-social] { text-decoration: none; }
 
 .journey [id] { scroll-margin-top: calc(var(--header-h) + var(--tabs-h)); }
 .tabs { position: sticky; top: var(--header-h); z-index: 40; background: var(--black); border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); }
-.tabs__in { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding-block: 8px; }
+.tabs__in { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-block: 8px; }
 .tab {
   appearance: none; cursor: pointer;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
-  min-height: 56px; padding: 6px 10px;
+  min-height: 56px; padding: 6px 8px;
   background: var(--graphite); color: var(--white);
   border: 2px solid var(--line); border-radius: var(--radius);
   font-family: var(--font-display); font-weight: 900; font-style: italic; text-transform: uppercase;
-  font-size: 1.45rem; line-height: 1;
+  font-size: 1.05rem; line-height: 1.05;
   transition: background-color .15s ease, color .15s ease, border-color .15s ease;
 }
 .tab small { font-size: .72rem; font-weight: 700; font-style: normal; letter-spacing: .2em; color: var(--muted); }
@@ -494,7 +495,7 @@ a[data-todo], a[data-social] { text-decoration: none; }
 }
 
 @media (min-width: 640px) {
-  .tab { font-size: 1.7rem; min-height: 64px; flex-direction: row; gap: 12px; }
+  .tab { font-size: 1.3rem; min-height: 64px; flex-direction: row; gap: 10px; }
   .path--3 { grid-template-columns: repeat(3, 1fr); }
   .path--4 { grid-template-columns: repeat(2, 1fr); }
   .tiles { grid-template-columns: repeat(4, 1fr); }
@@ -505,4 +506,5 @@ a[data-todo], a[data-social] { text-decoration: none; }
   .tiles { grid-template-columns: repeat(5, 1fr); }
   .chead { max-width: 720px; }
   .cta-row { margin-top: 44px; }
+  .final__btns { grid-template-columns: repeat(3, 1fr); }
 }

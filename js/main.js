@@ -2,8 +2,8 @@
   "use strict";
 
   var cfg = window.BROWN_CONFIG || { kiwify: {}, social: {} };
-  var COURSES = ["charme", "ritmos"];
-  var COURSE_NAME = { charme: "Baile Charme", ritmos: "Ritmos" };
+  var COURSES = ["charme", "ritmos", "zeroaoritmo"];
+  var COURSE_NAME = { charme: "Passinhos Charme", ritmos: "Ritmos", zeroaoritmo: "Do Zero ao Ritmo" };
 
   // Parâmetros de campanha preservados nos links de checkout
   var KEEP = /^(utm_[a-z_]+|src|sck|s[1-3]|fbclid|gclid|ttclid)$/i;
@@ -81,7 +81,7 @@
   function courseFromUrl() {
     var q = new URLSearchParams(window.location.search).get("curso");
     if (COURSES.indexOf(q) >= 0) return q;
-    var m = /^#(?:curso-|planos-|beneficios-|para-quem-)?(charme|ritmos)$/.exec(window.location.hash);
+    var m = /^#(?:curso-|planos-|beneficios-|para-quem-)?(charme|ritmos|zeroaoritmo)$/.exec(window.location.hash);
     return m ? m[1] : null;
   }
   var initial = courseFromUrl();

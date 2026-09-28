@@ -7,6 +7,7 @@ window.BROWN_CONFIG = {
   kiwify: {
     charme: { mensal: "https://pay.kiwify.com.br/eCHa2fP", semestral: "https://pay.kiwify.com.br/zjbAhKp", anual: "https://pay.kiwify.com.br/9vQRJmY" },
     ritmos: { mensal: "https://pay.kiwify.com.br/GPNTkrY", semestral: "https://pay.kiwify.com.br/Pf6hiu8", anual: "https://pay.kiwify.com.br/NKg0qxU" },
+    zeroaoritmo: { unico: "https://pay.kiwify.com.br/PlobZEb" },
   },
   // Redes sociais do rodapé
   social: {
