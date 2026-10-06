@@ -34,14 +34,33 @@
   var journey = document.querySelector(".journey");
   var active = "charme";
 
-  function setCourse(course) {
+  // Vídeo de cada curso: toca ao abrir o curso (clique) e pausa ao sair
+  function courseVideo(course) {
+    return document.querySelector("#curso-" + course + " .cvideo iframe");
+  }
+  function videoCommand(frame, func) {
+    if (frame && frame.src) {
+      frame.contentWindow.postMessage(JSON.stringify({ event: "command", func: func, args: [] }), "*");
+    }
+  }
+
+  function setCourse(course, autoplay) {
     if (COURSES.indexOf(course) < 0) return;
+    var changed = course !== active || !!(journey && !journey.getAttribute("data-course"));
     active = course;
     if (journey) journey.setAttribute("data-course", course);
     COURSES.forEach(function (c) {
       var panel = document.getElementById("curso-" + c);
       if (panel) panel.hidden = c !== course;
+      if (c !== course) videoCommand(courseVideo(c), "pauseVideo");
     });
+    var frame = courseVideo(course);
+    if (!frame || !autoplay) return;
+    if (!frame.src) {
+      frame.src = frame.getAttribute("data-src") + "&autoplay=1";
+    } else if (changed) {
+      videoCommand(frame, "playVideo");
+    }
   }
 
   function scrollToEl(el) {
@@ -75,7 +94,7 @@
       var course = el.getAttribute("data-course") || active;
       var target = el.getAttribute("data-goto"); // "curso" ou "planos"
       e.preventDefault();
-      setCourse(course);
+      setCourse(course, true);
       scrollToEl(document.getElementById(target + "-" + course));
     });
   });
