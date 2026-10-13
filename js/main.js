@@ -137,6 +137,37 @@
     el.addEventListener("click", function (e) { e.preventDefault(); notify("Pendente: " + el.getAttribute("data-todo") + "."); });
   });
 
+  // ---- Popup promocional: ao entrar, some em 10s, no máximo 1x por dia ----
+  (function () {
+    var dlg = document.querySelector(".promo");
+    var KEY = "brown_promo_day";
+    var path = window.location.pathname;
+    if (!dlg || typeof dlg.showModal !== "function" || !/(^|\/)(index\.html)?$/.test(path)) return;
+
+    var today = new Date().toDateString();
+    try { if (localStorage.getItem(KEY) === today) return; } catch (e) {}
+
+    dlg.querySelectorAll("a[data-promo]").forEach(function (el) {
+      var link = (cfg.promo || {})[el.getAttribute("data-promo")];
+      if (!link) { el.hidden = true; return; }
+      el.href = withTracking(link);
+      el.target = "_blank";
+      el.rel = "noopener";
+    });
+
+    var timer;
+    function close() { clearTimeout(timer); if (dlg.open) dlg.close(); }
+    dlg.querySelector(".promo__close").addEventListener("click", close);
+    dlg.addEventListener("click", function (e) { if (e.target === dlg) close(); });
+    dlg.addEventListener("close", function () { clearTimeout(timer); });
+
+    dlg.tabIndex = -1;
+    dlg.showModal();
+    dlg.focus();
+    try { localStorage.setItem(KEY, today); } catch (e) {}
+    timer = setTimeout(close, 10000);
+  })();
+
   // ---- Header: borda ao rolar ----
   function onScroll() { header.classList.toggle("is-scrolled", window.scrollY > 8); }
   onScroll();
