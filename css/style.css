@@ -184,19 +184,6 @@ h3 { font-weight: 800; }
 }
 .hero__photo img { display: block; width: 100%; max-width: 640px; height: auto; margin-inline: auto; }
 
-/* ---------- Popup promocional ---------- */
-.promo { border: 0; padding: 0; background: transparent; max-width: none; max-height: none; overflow: visible; margin: auto; }
-.promo:focus { outline: none; }
-.promo::backdrop { background: rgba(0, 0, 0, .78); }
-.promo__box { position: relative; width: min(94vw, 640px, calc(88svh * 1374 / 1145)); }
-.promo__box img { display: block; width: 100%; height: auto; border-radius: 10px; }
-.promo__cta, .promo__close { position: absolute; display: block; }
-.promo__cta { height: 7.7%; border-radius: 999px; top: 77.5%; }
-.promo__cta--charme { left: 7.6%; width: 39%; }
-.promo__cta--ritmos { left: 54.7%; width: 40.2%; }
-.promo__cta:focus-visible, .promo__close:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
-.promo__close { top: 0; right: 0; width: 6.6%; aspect-ratio: 1; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
-
 /* ---------- Seções ---------- */
 .sec { position: relative; padding-block: 72px; }
 .sec--graphite { background: var(--graphite); }

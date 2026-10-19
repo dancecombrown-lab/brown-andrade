@@ -9,11 +9,6 @@ window.BROWN_CONFIG = {
     ritmos: { mensal: "https://pay.kiwify.com.br/GPNTkrY", semestral: "https://pay.kiwify.com.br/cgakyso", anual: "https://pay.kiwify.com.br/CFEPhN7" },
     zeroaoritmo: { unico: "https://pay.kiwify.com.br/PlobZEb" },
   },
-  // Popup de condição especial (página principal): link de cada botão
-  promo: {
-    charme: "https://pay.kiwify.com.br/thsaYsp",
-    ritmos: "https://pay.kiwify.com.br/yinos3h",
-  },
   // Redes sociais do rodapé
   social: {
     instagram: "",
